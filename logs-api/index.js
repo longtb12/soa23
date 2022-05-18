@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 6666;
-const {insert} = require('./service/customer')
+const port = 5555;
+const {saveLogs} = require('./service/index')
 
 app.use(express.json());
 app.use(
@@ -10,8 +10,8 @@ app.use(
     extended: true,
   })
 );
-app.post("/insert", async (req, res) => {
-  const data = await insert(req)
+app.post("/save-logs", async (req, res) => {
+  const data = await saveLogs(req)
   res.json(data);
 });
 app.listen(process.env.PORT||port, () => {
