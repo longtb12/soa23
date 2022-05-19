@@ -5,7 +5,8 @@ function schemaCustomer() {
     return {
         name: Joi.string().required(),
         age: Joi.number().required(),
-        address: Joi.string().required()
+        address: Joi.string().required(),
+        email: Joi.string().required()
     }
 }
 
@@ -14,6 +15,7 @@ function schemaBooking() {
         name: Joi.string().required(),
         age: Joi.number().required(),
         address: Joi.string().required(),
+        email: Joi.string().required(),
         books: Joi.array().items(Joi.object().keys({
             id: Joi.number().required(),
             quantity: Joi.number().required(),
@@ -75,7 +77,8 @@ async function bookingProcess(params) {
         const data = await insertCustomer({
             name: body.name, 
             age: body.age, 
-            address: body.address
+            address: body.address,
+            email: body.email
         })
         
         const dataBooking = {
